@@ -1,0 +1,126 @@
+.about {
+  padding: var(--spacing-xxl) 0;
+  background-color: var(--primary-white);
+}
+
+.section-header {
+  margin-bottom: var(--spacing-xl);
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto var(--spacing-lg);
+  color: var(--dark-gray);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xl);
+}
+
+.about-image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto var(--spacing-xl);
+  width: 100%;
+}
+
+.founders-image {
+  max-width: 100%;
+  max-height: 450px;
+  width: auto;
+  margin: 0 auto;
+}
+
+.about-text {
+  flex: 1;
+}
+
+.about-text p {
+  margin-bottom: var(--spacing-md);
+  line-height: 1.7;
+}
+
+.about-features {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+}
+
+.feature {
+  background-color: var(--light-gray);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-md);
+  font-size: 3rem; /* Increased size since there's no background circle */
+  color: var(--primary-red); /* Use the brand red color directly on the icon */
+}
+
+.feature h3 {
+  margin-bottom: var(--spacing-sm);
+  font-size: 1.2rem;
+}
+
+.feature p {
+  margin-bottom: 0;
+  color: var(--dark-gray);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .about-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .about-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  
+  .about-image-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto var(--spacing-xl);
+  }
+  
+  .about-text {
+    flex: 1;
+    padding-right: var(--spacing-xl);
+  }
+  
+  .about-features {
+    flex: 1;
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1280px) {
+  .about-features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

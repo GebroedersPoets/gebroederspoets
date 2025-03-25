@@ -1,0 +1,284 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-index-fixed);
+  background-color: var(--primary-white);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+  height: 70px; /* Restore original height */
+  display: flex;
+  align-items: center;
+}
+
+.header.scrolled {
+  box-shadow: var(--shadow-md);
+  height: 60px; /* Restore original scrolled height */
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between; /* Push navigation to the right */
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  z-index: 1001; /* Vaste hogere waarde, zelfde als menuknop */
+  display: flex;
+  align-items: center;
+  margin-right: 2rem; /* Add space between logo and nav */
+}
+
+.logo-image {
+  height: 65px; /* Reduced size to fit header */
+  width: auto;
+  transition: all var(--transition-normal);
+  margin-left: -15px; /* Position more to the left */
+  mix-blend-mode: multiply; /* This helps remove the white background */
+  filter: brightness(1.05); /* Brighten the image slightly to compensate */
+  background-color: transparent !important;
+  background: none !important;
+  -webkit-background-clip: border-box !important;
+  -webkit-background-origin: padding-box !important;
+  -webkit-background-size: auto !important;
+}
+
+.logo {
+  background-color: transparent !important;
+  background: none !important;
+  padding: 5px 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.logo a, .logo a:hover, .logo a:focus, .logo a:active,
+.logo-link, .logo-link:hover, .logo-link:focus, .logo-link:active {
+  background-color: transparent !important;
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.logo-wrapper {
+  background-color: transparent !important;
+  background: none !important;
+}
+
+.scrolled .logo-image {
+  height: 55px; /* Smaller when scrolled to fit scrolled header */
+}
+
+/* Keep logo-text as fallback */
+.logo-text {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--primary-black);
+  display: none;
+}
+
+/* Mobile menu button */
+.mobile-menu-btn {
+  display: none; /* Hidden by default, shown in media query */
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--primary-black);
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 1001; /* Vaste hogere waarde dan de navigatie */
+  position: relative; /* Zorgt voor correcte stapeling */
+  padding: var(--spacing-xs);
+  min-height: 44px;
+  min-width: 44px;
+  pointer-events: auto; /* Zorgt ervoor dat de knop altijd klikbaar is */
+}
+
+.mobile-menu-btn:hover {
+  color: var(--primary-red);
+  background: none;
+}
+
+/* Navigation */
+.nav {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 80%;
+  max-width: 300px;
+  height: 100vh;
+  background-color: var(--primary-white);
+  box-shadow: var(--shadow-lg);
+  transition: right var(--transition-normal);
+  padding-top: 80px;
+  overflow-y: auto;
+  z-index: 1000; /* Vaste waarde lager dan de menuknop */
+}
+
+.nav.open {
+  right: 0;
+}
+
+/* When mobile menu is open, prevent body scrolling */
+body.menu-open {
+  overflow: hidden;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item a {
+  display: flex;
+  padding: var(--spacing-sm) var(--spacing-md);
+  color: var(--primary-black);
+  font-family: var(--font-heading);
+  font-weight: 700; /* Make text bold */
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  min-height: 44px;
+  align-items: center;
+  font-size: 1.05rem;
+}
+
+.nav-item a:hover,
+.nav-item a:focus {
+  color: var(--primary-red);
+  transform: scale(1.05); /* Subtle growth on hover */
+}
+
+.social-item a {
+  font-size: 1.25rem;
+}
+
+.cta-item {
+  margin-top: var(--spacing-sm);
+}
+
+.whatsapp-button {
+  background-color: var(--primary-red) !important;
+  color: var(--primary-white) !important;
+  padding: var(--spacing-xs) var(--spacing-md) !important;
+  border-radius: 4px;
+  font-weight: 600 !important;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.whatsapp-button:hover,
+.whatsapp-button:focus {
+  background-color: #D42200 !important;
+  color: var(--primary-white) !important;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 767px) {
+  /* Show mobile menu button */
+  .mobile-menu-btn {
+    display: flex;
+  }
+  .logo-image {
+    height: 60px; /* Reduced size on mobile */
+    margin-left: -10px; /* Less margin on mobile */
+  }
+  
+  .scrolled .logo-image {
+    height: 50px;
+  }
+  
+  /* Mobile nav styles */
+  .nav-item a {
+    font-size: 1.1rem;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-item a:hover,
+  .nav-item a:focus {
+    transform: scale(1.02); /* Smaller scale effect on mobile */
+    padding-left: calc(var(--spacing-md) + 5px); /* Indent slightly on hover */
+  }
+  
+  .whatsapp-button {
+    margin: var(--spacing-md) var(--spacing-lg);
+    text-align: center;
+    display: inline-block !important;
+    padding: var(--spacing-sm) var(--spacing-lg) !important;
+  }
+}
+
+/* Ensure container doesn't overflow on small screens */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+  width: 100%;
+}
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .mobile-menu-btn {
+    display: none;
+  }
+  
+  .nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    box-shadow: none;
+    padding-top: 0;
+    overflow-y: visible;
+  }
+  
+  /* Main navigation items */
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end; /* Align navigation to the right */
+  }
+  
+  .nav-item {
+    margin: 0 5px;
+  }
+  
+  .nav-item a {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    white-space: nowrap;
+  }
+  
+  .social-item {
+    margin-left: var(--spacing-sm);
+  }
+  
+  .cta-item {
+    margin-left: var(--spacing-sm);
+    margin-top: 0;
+  }
+  
+  .whatsapp-button {
+    padding: var(--spacing-xs) var(--spacing-sm) !important;
+  }
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 991px) and (min-width: 768px) {
+  .nav-item a {
+    font-size: 0.95rem;
+    padding: var(--spacing-xs) 8px;
+  }
+}
