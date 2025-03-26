@@ -16,11 +16,11 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "BUILD_PATH=./docs react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "predeploy": "npm run build && cp build/index.html build/404.html && echo gebroederspoets.nl > build/CNAME",
-    "deploy": "gh-pages --no-history -d build"
+    "predeploy": "npm run build && cp docs/index.html docs/404.html && echo gebroederspoets.nl > docs/CNAME",
+    "deploy": "gh-pages --no-history -d docs"
   },
   "eslintConfig": {
     "extends": [
